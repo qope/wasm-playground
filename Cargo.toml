@@ -15,6 +15,7 @@ getrandom = { version = "0.2", features = ["js"]}
 web-sys = { version = "0.3", features = ["console"] }
 wasm-bindgen = { version = "0.2.81", features = ["serde-serialize"]}
 wasm-bindgen-futures = "0.4"
+plonky2 = {path="../plonky2/plonky2", default-features = false }
 
 [lib]
 crate-type = ["cdylib"]

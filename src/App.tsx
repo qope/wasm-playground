@@ -1,32 +1,44 @@
 import React, { useState } from "react";
 import "./App.css";
-import init, { ip_get } from "wasm-lib";
+import init, { ip_get, merkle_tree, zk_hash } from "wasm-lib";
 
 function App() {
   const [result, setResult] = useState("");
   const [time, setTime] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const getIP = () => {
+  const doFunc = (f: any) => {
     (async () => {
       setResult("");
       setTime(0);
+      setIsLoading(true);
       const start = performance.now();
       await init();
-      const ip = await ip_get();
-      console.log(ip);
+      const r = await f();
       const end = performance.now();
-      setResult(ip);
+      setResult(r);
       setTime(Math.round(end - start));
+      setIsLoading(false);
     })();
   };
 
   return (
     <div className="App">
       <p>
-        <button onClick={getIP}> get ip</button>
+        <button onClick={() => doFunc(ip_get)} disabled={isLoading}>
+          get ip
+        </button>
+        <button onClick={() => doFunc(merkle_tree)} disabled={isLoading}>
+          merkle tree
+        </button>
+        <button onClick={() => doFunc(zk_hash)} disabled={isLoading}>
+          zk hash
+        </button>
         {/* <button onClick={getIP}> get ip</button> */}
       </p>
-      <p>{result}</p>
+      <form>
+        <input type="text" value={result} readOnly></input>
+      </form>
       <p>time: {time} ms</p>
     </div>
   );
