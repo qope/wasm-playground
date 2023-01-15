@@ -1,1 +1,1 @@
-pub mod reqwest_test;
+pub mod wasm_lib;
