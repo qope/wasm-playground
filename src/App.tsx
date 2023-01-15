@@ -24,7 +24,7 @@ function App() {
     <div className="App">
       <p>
         <button onClick={getIP}> get ip</button>
-        <button onClick={getIP}> get ip</button>
+        {/* <button onClick={getIP}> get ip</button> */}
       </p>
       <p>{result}</p>
       <p>time: {time} ms</p>
