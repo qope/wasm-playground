@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import "./App.css";
-import init, { ip_get, merkle_tree, zk_hash } from "wasm-lib";
+import init, { ip_get, merkle_tree, zk_hash, make_lamport_sig } from "wasm-lib";
 
 function App() {
   const [result, setResult] = useState("");
   const [time, setTime] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
 
-  const doFunc = (f: any) => {
+  const doFunc = (f: Function) => {
     (async () => {
       setResult("");
       setTime(0);
@@ -34,7 +34,9 @@ function App() {
         <button onClick={() => doFunc(zk_hash)} disabled={isLoading}>
           zk hash
         </button>
-        {/* <button onClick={getIP}> get ip</button> */}
+        <button onClick={() => doFunc(make_lamport_sig)} disabled={isLoading}>
+          lamport sig
+        </button>
       </p>
       <form>
         <input type="text" value={result} readOnly></input>

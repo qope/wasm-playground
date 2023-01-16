@@ -10,7 +10,7 @@ struct IP {
 pub async fn ip_get() -> String {
     let client = reqwest::Client::new();
     let body = client
-        .get("http://httpbin.org/get")
+        .get("https://httpbin.org/get")
         .send()
         .await
         .unwrap()

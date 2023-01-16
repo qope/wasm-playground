@@ -1,17 +1,7 @@
 use plonky2::{
-    field::{
-        goldilocks_field::GoldilocksField,
-        types::{Field, Sample},
-    },
-    hash::{
-        merkle_proofs::{verify_merkle_proof_to_cap, MerkleProofTarget},
-        merkle_tree::MerkleTree,
-        poseidon::PoseidonHash,
-    },
-    iop::{
-        target::Target,
-        witness::{PartialWitness, WitnessWrite},
-    },
+    field::{goldilocks_field::GoldilocksField, types::Field},
+    hash::poseidon::PoseidonHash,
+    iop::witness::PartialWitness,
     plonk::{
         circuit_builder::CircuitBuilder, circuit_data::CircuitConfig,
         config::PoseidonGoldilocksConfig,
