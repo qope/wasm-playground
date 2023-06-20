@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 import "./App.css";
-import init, { ip_get, merkle_tree, zk_hash, make_lamport_sig } from "wasm-lib";
+import init, {
+  ip_get,
+  merkle_tree,
+  zk_hash,
+  make_lamport_sig,
+  recursive_proof,
+} from "wasm-lib";
 
 function App() {
   const [result, setResult] = useState("");
@@ -36,6 +42,9 @@ function App() {
         </button>
         <button onClick={() => doFunc(make_lamport_sig)} disabled={isLoading}>
           lamport sig
+        </button>
+        <button onClick={() => doFunc(recursive_proof)} disabled={isLoading}>
+          recursive_proof
         </button>
       </p>
       <form>

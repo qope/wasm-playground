@@ -14,8 +14,14 @@ getrandom = { version = "0.2", features = ["js"]}
 web-sys = { version = "0.3", features = ["console"] }
 wasm-bindgen = { version = "0.2.81", features = ["serde-serialize"]}
 wasm-bindgen-futures = "0.4"
-plonky2 = {path="../plonky2/plonky2", default-features = false }
+plonky2 = {version ="0.1.3",  default-features = false }
 rand = "0.8.5"
 
 [lib]
 crate-type = ["cdylib"]
+
+[build]
+target = ["wasm64-unknown-unknown"]
+
+[rust]
+lld = true
